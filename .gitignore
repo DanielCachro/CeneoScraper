@@ -131,3 +131,6 @@ dmypy.json
 # Others
 diagrams/
 opinions/
+charts/
+stats/
+.vscode
