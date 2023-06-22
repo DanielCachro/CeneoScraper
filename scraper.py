@@ -47,16 +47,15 @@ while(url):
                 single_opinion[key] = get_cos(opinion, *value)
             opinions_all.append(single_opinion)
     try:
-        url = "https://www.ceneo.pl/"+get_cos(page_dom, "a.pagination__next", "href")
+        url = "https://www.ceneo.pl"+get_cos(page_dom,"a.pagination__next","href")
     except TypeError:
         url = None
-    try:
-        os.mkdir("opinions")
-    except FileExistsError:
-        pass
-    
-
-jf = open(f"opinions/{product_code}.json", "w", encoding="UTF-8")
-json.dump(opinions_all, jf, indent=4, ensure_ascii=False)
-jf.close()
-
+try:
+    os.mkdir("opinions")
+except FileExistsError:
+    pass
+# jf = open(f"opinions/{product_code}.json", "w", encoding="UTF-8")
+# json.dump(opinions_all, jf, indent=4, ensure_ascii=False)
+# jf.close()
+with open(f"opinions/{product_code}.json", "w", encoding="UTF-8") as jf:
+    json.dump(opinions_all, jf, indent=4, ensure_ascii=False)
